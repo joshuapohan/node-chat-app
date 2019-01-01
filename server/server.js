@@ -22,15 +22,16 @@ io.on('connection', (socket) =>{
 
  socket.broadcast.emit('newMessage', generateMessage('admin','new user joined'));
 
- socket.emit('newMessage', {
-   from: 'andrew',
-   text: 'see you then',
-   createdAt: 123123
- });
+ // socket.emit('newMessage', {
+ //   from: 'andrew',
+ //   text: 'see you then',
+ //   createdAt: 123123
+ // });
 
- socket.on('createMessage', (message) => {
+ socket.on('createMessage', (message, callback) => {
  	console.log('create message', message);
  	io.emit('newMessage', generateMessage(message.from, message.text));
+ 	callback('this is from the server');
  	// socket.broadcast.emit('newMessage', {
  	// 	from: message.from,
  	// 	text: message.text,
