@@ -19,6 +19,36 @@ class Users {
 		this.users.push(user);
 		return user;
 	}
+
+	removeUser(id){
+		var user = this.getUser(id);
+
+		this.users = this.users.filter((user)=>{
+			return user.id !== id;
+		}); 
+
+		
+		if(user){
+			return user;
+		}
+	}
+
+	getUser(id){
+		var users = this.users.filter((user)=>{
+			return user.id === id;
+		});
+		return users[0];
+	}
+
+	getUserList(room){
+		var users = this.users.filter((user)=>{
+			return user.room === room;
+		});
+		var namesArray = users.map((user)=>{
+			return user.name;
+		});
+		return namesArray;
+	}
 }
 
 // class Person {
