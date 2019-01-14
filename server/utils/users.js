@@ -27,7 +27,7 @@ class Users {
 			return user.id !== id;
 		}); 
 
-		
+
 		if(user){
 			return user;
 		}
@@ -48,6 +48,18 @@ class Users {
 			return user.name;
 		});
 		return namesArray;
+	}
+
+	getRoomList(){
+		var roomslist = [];
+
+		this.users.forEach((user)=>{
+			if(!roomslist.includes(user.room)){
+				roomslist.push(user.room);
+			}
+		});
+
+		return roomslist;
 	}
 }
 
